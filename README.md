@@ -1,9 +1,9 @@
 # Script para iniciar docker
-- **Para dev:**
+**Para dev:**
 - docker-compose -f docker-compose.dev.yml build
 - docker-compose -f docker-compose.dev.yml up
 
-- **Para prod:**
+**Para prod:**
 - docker-compose -f docker-compose.prod.yml build
 - docker-compose -f docker-compose.prod.yml up
 
