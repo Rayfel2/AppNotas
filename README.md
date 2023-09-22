@@ -1,9 +1,10 @@
 # Script para iniciar docker
-
+- **Para dev:**
 - docker-compose -f docker-compose.dev.yml build
 - docker-compose -f docker-compose.dev.yml up
 
-- docker-compose -f docker-compose.prod.yml up
+- **Para prod:**
+- docker-compose -f docker-compose.prod.yml build
 - docker-compose -f docker-compose.prod.yml up
 
 // El .env y otras validaciones estan en el docker-compose
