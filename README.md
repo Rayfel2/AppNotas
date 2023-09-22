@@ -8,6 +8,7 @@
 - docker-compose -f docker-compose.prod.yml up
 
 // El .env y otras validaciones estan en el docker-compose
+
 # AppNotas
 Equipo 2
 - Sebastian fernandez #1102556 (cvstian)
