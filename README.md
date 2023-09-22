@@ -1,4 +1,4 @@
-#Script para iniciar el docker 
+# Script para iniciar docker
 
 - docker-compose -f docker-compose.dev.yml build
 - docker-compose -f docker-compose.dev.yml up
