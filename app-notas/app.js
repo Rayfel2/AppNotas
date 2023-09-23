@@ -8,7 +8,33 @@ const path = require('path');
 const updateRouter = require('./update-router');
 
 const app = express();
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use('/updatepage', updateRouter);
+app.use((req, res, next) => {
+  const clientInfo = req.headers["user-agent"];
+
+  const ip = req.ip;
+
+  const queryParams = req.query;
+
+  const requestBody = req.body;
+
+  const logdoc = {
+    client: clientInfo,
+    ip: ip,
+    queryParams: queryParams,
+    requestBody: requestBody,
+  };
+  console.log(req.method + " : " + req.url);
+  console.log(logdoc);
+  next();
+});
 const port = process.env.PORT || 3000;
+
 console.log(`Servidor en ejecución en el puerto ${port}`);
 
 
@@ -25,19 +51,10 @@ db.once('open', () => {
   console.log('Conexión a MongoDB establecida.');
 });
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-app.use('/updatepage', updateRouter);
-app.use((req, res, next) => {
-  console.log(req.method + ' : ' + req.url);
-  next();
-});
 
-app.get('/', (req, res, next) => {
-  res.redirect('/index');
+app.get("/", (req, res, next) => {
+  res.redirect("/index");
 });
 
 app
