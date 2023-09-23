@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.set("strictQuery", false);
 
 /* eslint-disable new-cap */
 const notesSchema = mongoose.Schema({
